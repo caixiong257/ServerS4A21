@@ -62,7 +62,8 @@ namespace DfoServer.Network.Builders
             Register(new SimpleByteBodyBuilder(
                 (ushort)NotiPacketTypeA21.UPGRADE_CARRY_GOLD,
                 s => s.GoldLimitUpgradeLevel));
-            Register(new PremiumServiceInitBodyBuilder());
+            // 魔王契约改走 cmd=1 响应分支（CmdPacketTypeA21.PREMIUM_SERVICE = 0x036F）
+            RegisterCmd(new PremiumServiceInitBodyBuilder());
             Register(new AuctionServiceInitBodyBuilder());
 
             
